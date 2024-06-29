@@ -1,0 +1,9 @@
+# In _config.yml
+title: AI Full Immersion
+author: Elia Ribaldone
+execute:
+  execute_notebooks: force
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib

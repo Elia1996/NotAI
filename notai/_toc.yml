@@ -1,0 +1,9 @@
+# In _toc.yml
+format: jb-book
+root: intro
+parts:
+- caption: Study Plan
+  - file: plan
+- caption: AI Maths
+  chapters:
+  - file: maths/intro
