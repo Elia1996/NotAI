@@ -3,7 +3,8 @@ format: jb-book
 root: intro
 parts:
 - caption: Study Plan
+  chapters:
   - file: plan
 - caption: AI Maths
   chapters:
-  - file: maths/intro
+  - file: maths/intro.md

@@ -1,0 +1,1 @@
+".venv/Scripts/activate.bat" && ghp-import -n -p -f notai/_build/html
