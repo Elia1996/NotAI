@@ -1,2 +1,0 @@
-# NotAI
-Note About AI
