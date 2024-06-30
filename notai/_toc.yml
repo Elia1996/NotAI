@@ -7,4 +7,4 @@ parts:
   - file: plan
 - caption: AI Maths
   chapters:
-  - file: maths/intro.md
+  - file: maths/linear_algebra.md

@@ -7,3 +7,6 @@ execute:
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
   - references.bib
+
+html:
+    navbar_number_sections: true

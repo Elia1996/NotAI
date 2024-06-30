@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.12"
 jupyter-book = "^1.0.2"
 ghp-import = "^2.1.0"
+numpy = "^2.0.0"
+rich = "^13.7.1"
 
 
 [build-system]
