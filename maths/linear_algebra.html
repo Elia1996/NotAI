@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linear albegra for AI &#8212; AI Full Immersion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'maths/linear_algebra';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Piano di Studio per la Creazione e Utilizzo di AI" href="../plan.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AI Full Immersion</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    AI Notes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Plan</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plan.html">Piano di Studio per la Creazione e Utilizzo di AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AI Maths</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear albegra for AI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/maths/linear_algebra.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear albegra for AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liner-equation">Liner Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-property">Matrices property</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-properties">General properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operations">Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-is-commutative">Sum is commutative</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#product-dimension">Product dimension</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#element-wise-multiplication">Element-wise multiplication</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-properties">Mixed properties:</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#associative-property">Associative property</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#distributive-property">Distributive property</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix">Inverse matrix:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-albegra-for-ai">
+<h1>Linear albegra for AI<a class="headerlink" href="#linear-albegra-for-ai" title="Link to this heading">#</a></h1>
+<p>There are many vectors definitions but here we will focus on <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> (tuple of n real number), this is an example:
+$<span class="math notranslate nohighlight">\(
+\textbf{a} = \begin{bmatrix}1\cr2\cr3\cr4\end{bmatrix} \in \mathbb{R}^4
+\)</span>$</p>
+<p>This means that the vector <span class="math notranslate nohighlight">\(\textbf{a}\)</span> composed by four real number belongs to <span class="math notranslate nohighlight">\(\mathbb{R}^4\)</span>.</p>
+<section id="liner-equation">
+<h2>Liner Equation<a class="headerlink" href="#liner-equation" title="Link to this heading">#</a></h2>
+<p>Linear equation came from real world problem:</p>
+<blockquote>
+<div><p>A company has to produce <span class="math notranslate nohighlight">\(N_1 ... N_n\)</span> products, each product needs the resources <span class="math notranslate nohighlight">\(R_1 ... R_m\)</span>.</p>
+<p>Each resources is limited to <span class="math notranslate nohighlight">\(b_j\)</span> so <span class="math notranslate nohighlight">\(R_1 ... R_m\)</span> resources are limited to <span class="math notranslate nohighlight">\(b_1 ... b_m\)</span> units.</p>
+<p>Find the optimized number of products <span class="math notranslate nohighlight">\(x_1 ... x_n\)</span> which can be produced having maximum <span class="math notranslate nohighlight">\(b_1 ... b_m\)</span> resources.</p>
+<p>Use <span class="math notranslate nohighlight">\(a_{ij}\)</span> as the number of resource <span class="math notranslate nohighlight">\(R_j\)</span> used by the product <span class="math notranslate nohighlight">\(N_i\)</span>.</p>
+</div></blockquote>
+<p>This problem can be approched finding the number of the same resource <span class="math notranslate nohighlight">\(b_1\)</span> used by the <span class="math notranslate nohighlight">\(N_1 ... N_n\)</span>  products:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_1 a_{11} + x_2 a_{21} + ... + x_n a_{n1}  = b_1\ (Number\ of\ available\ R_1\ resources)\\
+x_1 a_{12} + x_2 a_{22} + ... + x_n a_{n2}  = b_2\\
+...\\
+x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
+\end{split}\]</div>
+<p>We can group the <span class="math notranslate nohighlight">\(x_1 ... x_n\)</span> and write the above equations as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}a_{11}  \cr a_{12}  \cr ...  \cr a_{1m} \end{bmatrix} x_1 + \begin{bmatrix}a_{21}  \cr a_{22}  \cr ...  \cr a_{2m} \end{bmatrix} x_2 + ... + \begin{bmatrix}a_{n1}  \cr a_{n2}  \cr ...  \cr a_{nm} \end{bmatrix} x_n = \begin{bmatrix}b_1  \cr b_2  \cr ...  \cr b_m \end{bmatrix}
+\]</div>
+<p>Grouping also the <span class="math notranslate nohighlight">\(a_{ij}\)</span> in a matrix and the <span class="math notranslate nohighlight">\(x_i\)</span> in a vector we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}a_{11} &amp; a_{21} &amp; ... &amp; a_{n1}\cr a_{12} &amp; a_{22} &amp; ... &amp; a_{n2}\cr ... &amp; ... &amp; ... &amp; ...\cr a_{1m} &amp; a_{2m} &amp; ... &amp; a_{nm}\end{bmatrix} \begin{bmatrix}x_1\cr x_2\cr ...\cr x_n\end{bmatrix} = \begin{bmatrix}b_1\cr b_2\cr ...\cr b_m\end{bmatrix}
+\]</div>
+<section id="matrices-property">
+<h3>Matrices property<a class="headerlink" href="#matrices-property" title="Link to this heading">#</a></h3>
+<p>In the above equation we have used the matrix notation, here we will see some properties of matrices.</p>
+<section id="general-properties">
+<h4>General properties<a class="headerlink" href="#general-properties" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\textbf{A} \in \mathbb{R}^{row\ num\ \times\ col\ num}\)</span> is the general form of a matrix, the exponent define the dimension so <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> is composed by <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\textbf{A} \in \mathbb{R}^{m \times n}\)</span> can be equivalently written as <span class="math notranslate nohighlight">\(\textbf{a} \in \mathbb{R}^{mn}\)</span>, this is called the vectorization of the matrix and it is done by stacking the columns of the matrix.</p></li>
+</ol>
+</section>
+<section id="operations">
+<h4>Operations<a class="headerlink" href="#operations" title="Link to this heading">#</a></h4>
+<section id="sum-is-commutative">
+<h5>Sum is commutative<a class="headerlink" href="#sum-is-commutative" title="Link to this heading">#</a></h5>
+<p><span class="math notranslate nohighlight">\(\textbf{A} + \textbf{B} = \textbf{B} + \textbf{A}\)</span>, the sum of two matrices is commutative.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 1:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 2:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 1 + Matrix 2:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix 1:
+[[1 2]
+ [3 1]]
+Matrix 2:
+[[ 3  0]
+ [-1  2]]
+Matrix 1 + Matrix 2:
+[[4 2]
+ [2 3]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same result is obtained by changing the order of the matrices.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 2 + Matrix 1:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix 2 + Matrix 1:
+[[4 2]
+ [2 3]]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><span class="math notranslate nohighlight">\(A \cdot \textbf{B} \neq \textbf{B} \cdot \textbf{A}\)</span>, the product of two matrices is not commutative, indeed:</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span> <span class="o">@</span> <span class="n">mat2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 4]
+ [8 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat2</span> <span class="o">@</span> <span class="n">mat1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 6]
+ [5 0]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="product-dimension">
+<h5>Product dimension<a class="headerlink" href="#product-dimension" title="Link to this heading">#</a></h5>
+<p>The product of a matrix <span class="math notranslate nohighlight">\(\textbf{A} \in \mathbb{R}^{m \times n}\)</span> with another matrix <span class="math notranslate nohighlight">\(\textbf{B} \in \mathbb{R}^{n \times p}\)</span> is a matrix <span class="math notranslate nohighlight">\(\textbf{C} \in \mathbb{R}^{m \times p}\)</span>. As you can see the result matrix has the number of rows of the first matrix and the number of columns of the second matrix.</p>
+<div class="math notranslate nohighlight">
+\[\underbrace{\textbf{A}}_{\textbf{m} \times n} \cdot \underbrace{\textbf{B}}_{n \times \textbf{p}} = \underbrace{\textbf{C}}_{\textbf{m} \times \textbf{p}}\]</div>
+<p>Only “neighboring” matrices can be multiplied, so <span class="math notranslate nohighlight">\(\textbf{A} \in \mathbb{R}^{m \times n}\)</span> can be multiplied by <span class="math notranslate nohighlight">\(\textbf{B} \in \mathbb{R}^{n \times p}\)</span> but not by <span class="math notranslate nohighlight">\(\textbf{C} \in \mathbb{R}^{p \times q}\)</span>.</p>
+</section>
+<section id="element-wise-multiplication">
+<h5>Element-wise multiplication<a class="headerlink" href="#element-wise-multiplication" title="Link to this heading">#</a></h5>
+<p>Matrix multiplication is not a element-wise multiplication, so <span class="math notranslate nohighlight">\(c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}\)</span> but not <span class="math notranslate nohighlight">\(c_{ij} = a_{ij} b_{ij}\)</span>.</p>
+</section>
+</section>
+<section id="mixed-properties">
+<h4>Mixed properties:<a class="headerlink" href="#mixed-properties" title="Link to this heading">#</a></h4>
+<section id="associative-property">
+<h5>Associative property<a class="headerlink" href="#associative-property" title="Link to this heading">#</a></h5>
+<p><span class="math notranslate nohighlight">\((A \cdot B) \cdot C = A \cdot (B \cdot C)\ \ \ \  \forall A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times p}, C \in \mathbb{R}^{p \times q}\)</span></p>
+</section>
+<section id="distributive-property">
+<h5>Distributive property<a class="headerlink" href="#distributive-property" title="Link to this heading">#</a></h5>
+<p><span class="math notranslate nohighlight">\(A \cdot (B + C) = A \cdot B + A \cdot C\quad\forall A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times p}, C \in \mathbb{R}^{n \times p}\)</span></p>
+</section>
+</section>
+<section id="identity-matrix">
+<h4>Identity matrix:<a class="headerlink" href="#identity-matrix" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>The identity matrix <span class="math notranslate nohighlight">\(\textbf{I}\)</span> is a square matrix with ones in the diagonal and zeros elsewhere.</p></li>
+<li><p>The identity matrix is the neutral element of the matrix multiplication, so <span class="math notranslate nohighlight">\(\textbf{A} \cdot \textbf{I} = \textbf{A}\)</span>.</p></li>
+<li><p>The identity matrix is the neutral element of the matrix sum, so <span class="math notranslate nohighlight">\(\textbf{A} + \textbf{I} = \textbf{A}\)</span>.</p></li>
+</ol>
+</section>
+<section id="inverse-matrix">
+<h4>Inverse matrix:<a class="headerlink" href="#inverse-matrix" title="Link to this heading">#</a></h4>
+<p>The inverse of a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> is denoted as <span class="math notranslate nohighlight">\(\textbf{A}^{-1}\)</span> and it is defined as the matrix that multiplied by <span class="math notranslate nohighlight">\(\textbf{A}\)</span> gives the identity matrix <span class="math notranslate nohighlight">\(\textbf{I}\)</span>.</p>
+<p>The adjugate matrix of a matrix is the matrix obtained by replacing each element with its</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./maths"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../plan.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Piano di Studio per la Creazione e Utilizzo di AI</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liner-equation">Liner Equation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-property">Matrices property</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-properties">General properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operations">Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sum-is-commutative">Sum is commutative</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#product-dimension">Product dimension</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#element-wise-multiplication">Element-wise multiplication</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-properties">Mixed properties:</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#associative-property">Associative property</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#distributive-property">Distributive property</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix">Inverse matrix:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Elia Ribaldone
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
