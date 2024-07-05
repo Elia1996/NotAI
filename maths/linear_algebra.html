@@ -345,6 +345,8 @@ document.write(`
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix">Inverse matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-matrix">Transpose matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrix">Symmetric matrix:</a></li>
 </ul>
 </li>
 </ul>
@@ -417,28 +419,27 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">notai.utils</span> <span class="kn">import</span> <span class="n">printalg</span>
 
-<span class="n">mat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 1:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 2:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 1 + Matrix 2:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix 1:
-[[1 2]
- [3 1]]
-Matrix 2:
-[[ 3  0]
- [-1  2]]
-Matrix 1 + Matrix 2:
-[[4 2]
- [2 3]]
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}+\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}=\begin{bmatrix}
+ 4 &amp; 2\\
+ 2 &amp; 3\\
+\end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <p>The same result is obtained by changing the order of the matrices.</p>
@@ -449,17 +450,23 @@ Matrix 1 + Matrix 2:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix 2 + Matrix 1:</span><span class="se">\n</span><span class="si">{</span><span class="n">mat2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix 2 + Matrix 1:
-[[4 2]
- [2 3]]
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}+\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}=\begin{bmatrix}
+ 4 &amp; 2\\
+ 2 &amp; 3\\
+\end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <ol class="arabic simple" start="2">
@@ -472,16 +479,23 @@ Matrix 1 + Matrix 2:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span> <span class="o">@</span> <span class="n">mat2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\cdot&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 4]
- [8 2]]
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}=\begin{bmatrix}
+ 1 &amp; 4\\
+ 8 &amp; 2\\
+\end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -491,16 +505,23 @@ Matrix 1 + Matrix 2:
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat2</span> <span class="o">@</span> <span class="n">mat1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\cdot&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">B</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 6]
- [5 0]]
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}=\begin{bmatrix}
+ 3 &amp; 6\\
+ 5 &amp; 0\\
+\end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 </section>
@@ -513,7 +534,7 @@ Matrix 1 + Matrix 2:
 </section>
 <section id="element-wise-multiplication">
 <h5>Element-wise multiplication<a class="headerlink" href="#element-wise-multiplication" title="Link to this heading">#</a></h5>
-<p>Matrix multiplication is not a element-wise multiplication, so <span class="math notranslate nohighlight">\(c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}\)</span> but not <span class="math notranslate nohighlight">\(c_{ij} = a_{ij} b_{ij}\)</span>.</p>
+<p>Matrix multiplication is not a element-wise multiplication, this means that product can be written as <span class="math notranslate nohighlight">\(c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj}\)</span> but not as <span class="math notranslate nohighlight">\(c_{ij} = a_{ij} b_{ij}\)</span>.</p>
 </section>
 </section>
 <section id="mixed-properties">
@@ -521,10 +542,103 @@ Matrix 1 + Matrix 2:
 <section id="associative-property">
 <h5>Associative property<a class="headerlink" href="#associative-property" title="Link to this heading">#</a></h5>
 <p><span class="math notranslate nohighlight">\((A \cdot B) \cdot C = A \cdot (B \cdot C)\ \ \ \  \forall A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times p}, C \in \mathbb{R}^{p \times q}\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;) @ &quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="s2">&quot;(&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">C</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left(\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\right)\,\cdot\,\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 0\\
+\end{bmatrix}=\begin{bmatrix}
+ 13 &amp; 2\\
+ 14 &amp; 16\\
+\end{bmatrix}\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\left(\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 0\\
+\end{bmatrix}\right)=\begin{bmatrix}
+ 13 &amp; 2\\
+ 14 &amp; 16\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
 </section>
 <section id="distributive-property">
 <h5>Distributive property<a class="headerlink" href="#distributive-property" title="Link to this heading">#</a></h5>
 <p><span class="math notranslate nohighlight">\(A \cdot (B + C) = A \cdot B + A \cdot C\quad\forall A \in \mathbb{R}^{m \times n}, B \in \mathbb{R}^{n \times p}, C \in \mathbb{R}^{n \times p}\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@ [&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot; ] =&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">))</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot; +&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span> <span class="o">+</span> <span class="n">A</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\,\left[\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}+\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 0\\
+\end{bmatrix}\,\right]\,=\begin{bmatrix}
+ 8 &amp; 6\\
+ 14 &amp; 8\\
+\end{bmatrix}\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\,+\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 0\\
+\end{bmatrix}=\begin{bmatrix}
+ 8 &amp; 6\\
+ 14 &amp; 8\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
 </section>
 </section>
 <section id="identity-matrix">
@@ -538,7 +652,315 @@ Matrix 1 + Matrix 2:
 <section id="inverse-matrix">
 <h4>Inverse matrix:<a class="headerlink" href="#inverse-matrix" title="Link to this heading">#</a></h4>
 <p>The inverse of a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> is denoted as <span class="math notranslate nohighlight">\(\textbf{A}^{-1}\)</span> and it is defined as the matrix that multiplied by <span class="math notranslate nohighlight">\(\textbf{A}\)</span> gives the identity matrix <span class="math notranslate nohighlight">\(\textbf{I}\)</span>.</p>
-<p>The adjugate matrix of a matrix is the matrix obtained by replacing each element with its</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">I</span>  <span class="c1"># Inverse of A</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1} = &quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^{-1}\,=\,\begin{bmatrix}
+\frac{-1}{5} &amp;\frac{2}{5}\\[6pt]
+\frac{3}{5} &amp;\frac{-1}{5}\\[6pt]
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The product for the inverse matrix is commutative, so <span class="math notranslate nohighlight">\(\textbf{A} \cdot \textbf{A}^{-1} = \textbf{A}^{-1} \cdot \textbf{A} = \textbf{I}\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">Ainv</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+\frac{-1}{5} &amp;\frac{2}{5}\\[6pt]
+\frac{3}{5} &amp;\frac{-1}{5}\\[6pt]
+\end{bmatrix}=\begin{bmatrix}
+\frac{-1}{5} &amp;\frac{2}{5}\\[6pt]
+\frac{3}{5} &amp;\frac{-1}{5}\\[6pt]
+\end{bmatrix}\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}=\begin{bmatrix}
+\frac{1}{1} &amp;0\\[6pt]
+\frac{0}{1} &amp;\frac{1}{1}\\[6pt]
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The <strong>inverse of the product of two matrices</strong> is the <strong>product of the inverses</strong> of the matrices in the reverse order, so <span class="math notranslate nohighlight">\((\textbf{A} \cdot \textbf{B})^{-1} = \textbf{B}^{-1} \cdot \textbf{A}^{-1}\)</span>, this is not valid for sum.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
+<span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">B</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1} @&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">I</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^{-1} = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1} @&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1}&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\right]^{-1}\,=\,\begin{bmatrix}
+\frac{-1}{15} &amp;\frac{2}{15}\\[6pt]
+\frac{4}{15} &amp;\frac{-1}{30}\\[6pt]
+\end{bmatrix}\,\,\,\,\,\,\,\,\,\,\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}^{-1}\,\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^{-1}\,=\,\begin{bmatrix}
+\frac{-1}{15} &amp;\frac{2}{15}\\[6pt]
+\frac{4}{15} &amp;\frac{-1}{30}\\[6pt]
+\end{bmatrix}\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\right]^{-1}\,=\,\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}^{-1}\,\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^{-1}\end{split}\]</div>
+</div>
+</div>
+</section>
+<section id="transpose-matrix">
+<h4>Transpose matrix:<a class="headerlink" href="#transpose-matrix" title="Link to this heading">#</a></h4>
+<p>The transpose of a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> is denoted as <span class="math notranslate nohighlight">\(\textbf{A}^T\)</span> and it is defined as the matrix that has the rows of <span class="math notranslate nohighlight">\(\textbf{A}\)</span> as columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 1 &amp; 3\\
+ 2 &amp; 1\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The transpose of a product is the <strong>product of the transposes in reverse order</strong>, so <span class="math notranslate nohighlight">\((\textbf{A} \cdot \textbf{B})^T = \textbf{B}^T \cdot \textbf{A}^T\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^T = &quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T @&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\right]^T\,=\,\begin{bmatrix}
+ 1 &amp; 4\\
+ 8 &amp; 2\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 1 &amp; 8\\
+ 4 &amp; 2\\
+\end{bmatrix}\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}^T\,\cdot\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 3 &amp; -1\\
+ 0 &amp; 2\\
+\end{bmatrix}\cdot\begin{bmatrix}
+ 1 &amp; 3\\
+ 2 &amp; 1\\
+\end{bmatrix}\,=\,\begin{bmatrix}
+ 1 &amp; 8\\
+ 4 &amp; 2\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The transpose of a sum is the <strong>sum of the transposes</strong>, so <span class="math notranslate nohighlight">\((\textbf{A} + \textbf{B})^T = \textbf{A}^T + \textbf{B}^T\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^T = &quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T +&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}+\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}\right]^T\,=\,\begin{bmatrix}
+ 4 &amp; 2\\
+ 2 &amp; 3\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 4 &amp; 2\\
+ 2 &amp; 3\\
+\end{bmatrix}\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2\\
+ 3 &amp; 1\\
+\end{bmatrix}^T\,+\begin{bmatrix}
+ 3 &amp; 0\\
+ -1 &amp; 2\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 1 &amp; 3\\
+ 2 &amp; 1\\
+\end{bmatrix}+\begin{bmatrix}
+ 3 &amp; -1\\
+ 0 &amp; 2\\
+\end{bmatrix}\,=\,\begin{bmatrix}
+ 4 &amp; 2\\
+ 2 &amp; 3\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+</section>
+<section id="symmetric-matrix">
+<h4>Symmetric matrix:<a class="headerlink" href="#symmetric-matrix" title="Link to this heading">#</a></h4>
+<p>A matrix is symmetric if it is equal to its transpose, so <span class="math notranslate nohighlight">\(\textbf{A} = \textbf{A}^T\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2 &amp; 3\\
+ 2 &amp; 3 &amp; 4\\
+ 3 &amp; 4 &amp; 5\\
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+ 1 &amp; 2 &amp; 3\\
+ 2 &amp; 3 &amp; 4\\
+ 3 &amp; 4 &amp; 5\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<p>Symmetric matrices have some interesting properties:</p>
+<ol class="arabic simple">
+<li><p>The sum of two symmetric matrices is symmetric.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">printalg</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">S</span> <span class="o">+</span> <span class="n">S2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \begin{bmatrix}
+ 1 &amp; 2 &amp; 3\\
+ 2 &amp; 3 &amp; 4\\
+ 3 &amp; 4 &amp; 5\\
+\end{bmatrix}+\begin{bmatrix}
+ 2 &amp; -1 &amp; 0\\
+ -1 &amp; 2 &amp; -1\\
+ 0 &amp; -1 &amp; 2\\
+\end{bmatrix}=\begin{bmatrix}
+ 3 &amp; 1 &amp; 3\\
+ 1 &amp; 5 &amp; 3\\
+ 3 &amp; 3 &amp; 7\\
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>If A is invertible, then <span class="math notranslate nohighlight">\((\textbf{S}^{-1})^T = (\textbf{S}^T)^{-1}\)</span>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[ &quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;^{-1} ]^T = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\,\begin{bmatrix}
+ 2 &amp; -1 &amp; 0\\
+ -1 &amp; 2 &amp; -1\\
+ 0 &amp; -1 &amp; 2\\
+\end{bmatrix}^{-1}\,\right]^T\,=\,\begin{bmatrix}
+\frac{3}{4} &amp;\frac{1}{2} &amp;\frac{1}{4}\\[6pt]
+\frac{1}{2} &amp;\frac{1}{1} &amp;\frac{1}{2}\\[6pt]
+\frac{1}{4} &amp;\frac{1}{2} &amp;\frac{3}{4}\\[6pt]
+\end{bmatrix}^T\,=\,\begin{bmatrix}
+\frac{3}{4} &amp;\frac{1}{2} &amp;\frac{1}{4}\\[6pt]
+\frac{1}{2} &amp;\frac{1}{1} &amp;\frac{1}{2}\\[6pt]
+\frac{1}{4} &amp;\frac{1}{2} &amp;\frac{3}{4}\\[6pt]
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[ &quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;^T ]^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \left[\,\begin{bmatrix}
+ 2 &amp; -1 &amp; 0\\
+ -1 &amp; 2 &amp; -1\\
+ 0 &amp; -1 &amp; 2\\
+\end{bmatrix}^T\,\right]^{-1}\,=\,\begin{bmatrix}
+ 2 &amp; -1 &amp; 0\\
+ -1 &amp; 2 &amp; -1\\
+ 0 &amp; -1 &amp; 2\\
+\end{bmatrix}^{-1}\,=\,\begin{bmatrix}
+\frac{3}{4} &amp;\frac{1}{2} &amp;\frac{1}{4}\\[6pt]
+\frac{1}{2} &amp;\frac{1}{1} &amp;\frac{1}{2}\\[6pt]
+\frac{1}{4} &amp;\frac{1}{2} &amp;\frac{3}{4}\\[6pt]
+\end{bmatrix}\end{split}\]</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Only n x n matrices can be symmetric.</p></li>
+</ol>
 </section>
 </section>
 </section>
@@ -615,6 +1037,8 @@ Matrix 1 + Matrix 2:
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">Identity matrix:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix">Inverse matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-matrix">Transpose matrix:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetric-matrix">Symmetric matrix:</a></li>
 </ul>
 </li>
 </ul>
