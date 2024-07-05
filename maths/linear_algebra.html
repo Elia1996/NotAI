@@ -652,13 +652,19 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <section id="inverse-matrix">
 <h4>Inverse matrix:<a class="headerlink" href="#inverse-matrix" title="Link to this heading">#</a></h4>
 <p>The inverse of a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> is denoted as <span class="math notranslate nohighlight">\(\textbf{A}^{-1}\)</span> and it is defined as the matrix that multiplied by <span class="math notranslate nohighlight">\(\textbf{A}\)</span> gives the identity matrix <span class="math notranslate nohighlight">\(\textbf{I}\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">I</span>  <span class="c1"># Inverse of A</span>
 <span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;^{-1} = &quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \begin{bmatrix}
@@ -673,12 +679,18 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ul class="simple">
 <li><p>The product for the inverse matrix is commutative, so <span class="math notranslate nohighlight">\(\textbf{A} \cdot \textbf{A}^{-1} = \textbf{A}^{-1} \cdot \textbf{A} = \textbf{I}\)</span>.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">Ainv</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">Ainv</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \begin{bmatrix}
@@ -702,7 +714,12 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ul class="simple">
 <li><p>The <strong>inverse of the product of two matrices</strong> is the <strong>product of the inverses</strong> of the matrices in the reverse order, so <span class="math notranslate nohighlight">\((\textbf{A} \cdot \textbf{B})^{-1} = \textbf{B}^{-1} \cdot \textbf{A}^{-1}\)</span>, this is not valid for sum.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
 <span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span>
@@ -711,6 +728,7 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \left[\begin{bmatrix}
@@ -752,12 +770,18 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <section id="transpose-matrix">
 <h4>Transpose matrix:<a class="headerlink" href="#transpose-matrix" title="Link to this heading">#</a></h4>
 <p>The transpose of a matrix <span class="math notranslate nohighlight">\(\textbf{A}\)</span> is denoted as <span class="math notranslate nohighlight">\(\textbf{A}^T\)</span> and it is defined as the matrix that has the rows of <span class="math notranslate nohighlight">\(\textbf{A}\)</span> as columns.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \begin{bmatrix}
@@ -772,13 +796,19 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ul class="simple">
 <li><p>The transpose of a product is the <strong>product of the transposes in reverse order</strong>, so <span class="math notranslate nohighlight">\((\textbf{A} \cdot \textbf{B})^T = \textbf{B}^T \cdot \textbf{A}^T\)</span>.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^T = &quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">printalg</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T @&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;@&quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \left[\begin{bmatrix}
@@ -816,13 +846,19 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ul class="simple">
 <li><p>The transpose of a sum is the <strong>sum of the transposes</strong>, so <span class="math notranslate nohighlight">\((\textbf{A} + \textbf{B})^T = \textbf{A}^T + \textbf{B}^T\)</span>.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;]^T = &quot;</span><span class="p">,</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">printalg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">&quot;^T +&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot; = &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \left[\begin{bmatrix}
@@ -861,13 +897,19 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <section id="symmetric-matrix">
 <h4>Symmetric matrix:<a class="headerlink" href="#symmetric-matrix" title="Link to this heading">#</a></h4>
 <p>A matrix is symmetric if it is equal to its transpose, so <span class="math notranslate nohighlight">\(\textbf{A} = \textbf{A}^T\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
 <span class="n">printalg</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \begin{bmatrix}
@@ -885,13 +927,19 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ol class="arabic simple">
 <li><p>The sum of two symmetric matrices is symmetric.</p></li>
 </ol>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="n">printalg</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">S</span> <span class="o">+</span> <span class="n">S2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \begin{bmatrix}
@@ -912,12 +960,18 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 <ol class="arabic simple" start="3">
 <li><p>If A is invertible, then <span class="math notranslate nohighlight">\((\textbf{S}^{-1})^T = (\textbf{S}^T)^{-1}\)</span>.</p></li>
 </ol>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[ &quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;^{-1} ]^T = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="p">,</span> <span class="s2">&quot;^T = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">I</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \left[\,\begin{bmatrix}
@@ -935,12 +989,18 @@ x_1 a_{1m} + x_2 a_{2m} + ... + x_n a_{nm}  = b_m
 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">printalg</span><span class="p">(</span><span class="s2">&quot;[ &quot;</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="s2">&quot;^T ]^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;^{-1} = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\displaystyle \left[\,\begin{bmatrix}
