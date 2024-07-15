@@ -11,6 +11,8 @@ jupyter-book = "^1.0.2"
 ghp-import = "^2.1.0"
 numpy = "^2.0.0"
 rich = "^13.7.1"
+matplotlib = "^3.9.1"
+jupyter-tikz = "^0.2.1"
 
 
 [build-system]

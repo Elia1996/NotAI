@@ -2,9 +2,7 @@
 format: jb-book
 root: intro
 parts:
-- caption: Study Plan
+- caption: Linear Algebra
   chapters:
-  - file: plan
-- caption: AI Maths
-  chapters:
-  - file: maths/linear_algebra.md
+  - file: maths/basics.ipynb
+  - file: maths/linear-algebra.ipynb
